@@ -1,0 +1,126 @@
+<app-header></app-header>
+<div class="wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="container-fluid d-flex flex-column justify-content-start" style="padding-top: 1%;">
+        <div class="row ml-1"><h5>Listado de recibos</h5></div>
+        <div  *ngIf=" pwisnull != -1 " class="row justify-content-center">
+                <!-- <div  class="row justify-content-center"> -->
+            <div class="col-md-12">
+
+                <div class="row" ng-repeat="let res in resumen">
+                    <div class="col-md-10 offset-md-1">
+                        <ul class="px-4" style="list-style: none; border-left: 1px solid lightgray; border-right: 1px solid lightgray">
+                            <li class="my-2"><i class="fas fa-file fa-2x"></i> Enero 2019 <span style="float: right">Visualizar</span> </li>
+                            <li class="my-2"><i class="fas fa-file fa-2x"></i> Febrero 2019</li>
+                            <li class="my-2"><i class="fas fa-file fa-2x"></i> Marzo 2019</li>
+                            <li class="my-2"><i class="fas fa-file fa-2x "></i> Abril 2019</li>
+                            <li class="my-2"><i class="fas fa-file fa-2x"> </i> Mayo 2019</li>
+                            <li class="my-2"><i class="fas fa-file fa-2x"> </i> Junio 2019</li>
+                            <div class=" flex d-flex align-items-center "><i class="fas fa-file fa-2x float-left mr-2"> </i>
+                            <li style="width:100%;" class="flex d-flex flex align-items-center justify-content-between">
+                                <div class="row">
+                                        
+                                    <div class="col-md-10" style="font-weight: 500;">
+                                        Enero 2019
+                                    </div>
+                                    <div class="col-md-10" style="font-size: 15px;">
+                                            Recibo
+                                        </div>
+                                </div>
+                                <button class="btn btn-sm btn-outline-primary mb-2 mr-2" 
+                                (click)="openScrollableContent(longContent, 1)">Visualizar</button>
+                            </li>   
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+
+            <!-- <section *ngIf=" pwisnull == -1 ">
+                <div class="row" ng-repeat="let res in resumen">
+                    <div class="col-md-6 col-md-offset-3">
+                        asdasdasd
+                    </div>
+                </div>
+            </section> -->
+
+            </div>
+        </div>
+
+        <div  *ngIf=" pwisnull == -1 " class="row justify-content-center">
+                <div class="col-md-10 col-md-offset-1 ">
+    
+                <section *ngIf=" pwisnull == 1 ">
+                    <div class="row" ng-repeat="let res in resumen">
+                        <div class="col-md-12">
+                            Recibo
+                        </div>
+                    </div>
+                </section>
+
+                    <div class="row" ng-repeat="let res in resumen">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    {{currentUser.name}}: 
+                                    Debe generar su contraseña para continuar
+                                </div>
+                                <div class="card-body">
+                                    Para poder visualizar sus recibos, es necesario que genere una contraseña. La misma
+                                    se utilizará para cifrar su información y será requerida cada vez que quiera visualizar
+                                    o descargar algún recibo. <br>
+                                    <form #pass="ngForm" [formGroup]="passform" (ngSubmit)="passSubmit(ngForm)"  class="pt-1">
+                                    <mat-form-field style="width: 100%;">
+                                        <input type="password" id="passw" formControlName="passw" matInput  placeholder="Contraseña correo arsat*" [ngClass]="{ 'is-invalid': submitted && f.passw.errors }">
+                                        <div *ngIf="submitted && f.passw.errors" class="invalid-feedback">
+                                            <div *ngIf="f.passw.errors.required">La contraseña es obligatoria</div>
+                                            <div *ngIf="f.passw.errors.minlength">La contraseña debe tener al menos 8 caracteres</div>
+                                            <div *ngIf="f.passw.errors.pattern">La contraseña solo acepta letras, números y '_' </div>
+                                        </div>  
+                                    </mat-form-field> 
+                                    <mat-form-field style="width: 100%;">
+                                        <input type="password" id="passConfirm" formControlName="passConfirm" matInput  placeholder="Confirme la contraseña*" pattern="{{f.passw.value}}">
+                                        <div *ngIf="submitted && f.passConfirm.errors" class="invalid-feedback">
+                                            <div *ngIf="f.passConfirm.errors.pattern"> Las contraseñas deben ser idénticas</div>
+                                            <div *ngIf="f.passConfirm.errors.required"> Por favor, complete este campo</div>
+                                        </div>  
+                                    </mat-form-field> 
+                                    <button type="submit" class="btn btn-primary btn-sm">Aceptar</button>
+                                    </form>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        <!-- <div class="col-md-6">
+            <div class="card">
+                <div class="card-header header-tarjeta">Bienvenido a la administración de recibos</div>
+                <div class="card-body body-tarjeta">
+                  Aquí podrás ver las tareas relacionadas con los recibos.
+                </div>
+              </div>
+        </div> -->
+    </div>
+
+    
+</div>
+
+<!--  -->
+
+<ng-template #longContent let-modal>
+        <!-- <div>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body"> -->
+            <ngx-extended-pdf-viewer style="padding:none; margin: none;" [src]="'../assets/document.pdf'"  [delayFirstView]="1000" 
+            backgroundColor="#ffffff" [height]="'90vh'" [useBrowserLocale]="true" [showFindButton]="false" [showOpenFileButton]="false"
+            [showBookmarkButton]="false" [showSecondaryToolbarButton]="false" [showPrintButton]="false">
+            </ngx-extended-pdf-viewer>
+        <!-- </div>
+        <div class="modal-footer py-1">
+          <button type="button" class="btn btn-sm btn-primary" (click)="modal.close('Close click')">Close</button>
+        </div> -->
+      </ng-template>

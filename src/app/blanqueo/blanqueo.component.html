@@ -1,0 +1,41 @@
+<app-header></app-header>
+<div class="wrapper">
+        <app-sidebar></app-sidebar>
+        <div class="contaner-fluid" style="width:100%;">
+        <div class="col-md-10 col-sm-12 offset-md-1 mt-3">
+                <mat-card class="clave-card">
+                        <mat-card-header>
+                          <mat-card-title>Clave de seguridad</mat-card-title>
+                          <mat-card-subtitle>Blanquear clave de seguridad de recibos</mat-card-subtitle>
+                        </mat-card-header>
+                        <p class="warning-p">Aviso: al blanquear la clave se eliminarán temporalmente sus recibos actuales.</p>
+
+                        <p class="warning-p">Una vez que Talento Humano los procese nuevamente los mismos volverán a estar disponible para su visualización.</p>
+                        <mat-card-content>
+                          
+                            <form #blanqueoform="ngForm" [formGroup]="blanqueoForm" (ngSubmit)="onsubmitblanqueo(ngForm)">
+                                <mat-form-field>
+                                    <input type="password" formControlName="nuevopass" matInput placeholder="Nueva contraseña*" [ngClass]="{ 'is-invalid': submitted && b.nuevopass.errors }">
+                                    <div *ngIf="submitted && b.nuevopass.errors" class="invalid-feedback">
+                                        <div *ngIf="b.nuevopass.errors.required">La contraseña es obligatoria</div>
+                                        <div *ngIf="b.nuevopass.errors.minlength">La contraseña debe tener al menos 8 caracteres</div>
+                                        <div *ngIf="b.nuevopass.errors.pattern">La contraseña solo acepta letras, números y '_' </div>
+                                    </div>
+                                </mat-form-field>
+                                <mat-form-field>
+                                        <input type="password" formControlName="nuevopassconfirm" matInput placeholder="Confirmación nueva contraseña*" pattern="{{b.nuevopass.value}}"
+                                        [ngClass]="{ 'is-invalid': submitted && b.nuevopassconfirm.errors }">
+                                        <div *ngIf="submitted && b.nuevopassconfirm.errors" class="invalid-feedback">
+                                                <div *ngIf="b.nuevopassconfirm.errors.required">Por favor, complete este campo</div>
+                                                <div *ngIf="b.nuevopassconfirm.errors.pattern">Las contraseñas no coinciden</div>
+                                            </div>
+                                </mat-form-field>
+                                <br>
+                                <button type="submit" class="btn btn-primary btn-sm">Aceptar</button>
+                            </form>
+                            
+
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+</div>

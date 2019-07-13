@@ -1,0 +1,33 @@
+.wrapper{
+    align-items: stretch;
+    display:flex;
+    width: 100%;
+}
+
+
+.clave-card{
+    max-width: 100%;
+}
+
+.mat-card-title{
+    font-size: 24px;
+    color: #0094d4;
+}
+.mat-card-subtitle{
+    color: rgba(0,0,0,.87);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.mat-form-field{
+    width: 100%;
+}
+
+.mat-raised-button{
+    background-color: #0094d4;
+    color: #fff;
+}
+
+.invalid-feedback{
+    display: block;
+}

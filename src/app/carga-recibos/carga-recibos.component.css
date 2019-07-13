@@ -1,0 +1,22 @@
+.wrapper{
+    align-items: stretch;
+    display: flex;
+    width: 100%;
+}
+.header-tarjeta{
+    font-weight: 700;
+    color:  #007bff;
+    font-size: 18px;
+    padding: 5px;   
+}
+.body-tarjeta{
+    font-size: 14px;
+}
+input, select{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.mat-form-field{
+    width: 100%;
+}

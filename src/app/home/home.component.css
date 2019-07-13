@@ -1,0 +1,14 @@
+.wrapper{
+    align-items: stretch;
+    display: flex;
+    width: 100%;
+}
+.header-tarjeta{
+    font-weight: 700;
+    color:  rgb(0, 123, 255);
+    font-size: 18px;
+    padding: 5px;   
+}
+.body-tarjeta{
+    font-size: 14px;
+}

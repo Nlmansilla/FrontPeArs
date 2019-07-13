@@ -1,0 +1,14 @@
+.wrapper{
+    align-items: stretch;
+    display: flex;
+    width: 100%;
+}
+.invalid-feedback{
+    display: block;
+}
+
+.card-header{
+    font-weight: bold;
+    font-size: 18px;
+    color: #0094d4;
+}

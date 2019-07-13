@@ -1,0 +1,77 @@
+<app-header></app-header>
+<div class="wrapper">
+        <app-sidebar></app-sidebar>
+        <div class="contaner-fluid" style="width:100%;">
+        <div class="col-md-10 offset-md-1 mt-3">
+                <mat-card class="clave-card">
+                        <mat-card-header>
+                          <mat-card-title>Clave de seguridad</mat-card-title>
+                          <mat-card-subtitle>Cambiar la clave de seguridad de recibos</mat-card-subtitle>
+                        </mat-card-header>
+                        
+                        <mat-card-content>
+                          
+                            <form #claveform="ngForm" [formGroup]="claveForm" (ngSubmit)="claveSubmit(ngForm)" >
+                                <div class="row">
+                                    <div class="col-md-6 offset-md-1">
+                                        <mat-form-field>
+                                            <input placeholder="Contraseña actual" id="passactual" formControlName="passactual"  matInput
+                                             type="password" name="passactual"  [ngClass]="{ 'is-invalid': submitted && f.passactual.errors }"/>
+                                             <div *ngIf="submitted && f.passactual.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.passactual.errors.required">La contraseña es obligatoria</div>
+                                                    <div *ngIf="f.passactual.errors.minlength">La contraseña debe tener al menos 8 caracteres</div>
+                                                    <div *ngIf="f.passactual.errors.pattern">La contraseña solo acepta letras, números y '_' </div>
+                                                </div>  
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                        <div class="col-md-6 offset-md-1">
+                                            <mat-form-field>
+                                                    <input placeholder="Contraseña nueva" id="passnueva" formControlName="passnueva"  matInput
+                                                    type="password" name="passnueva"  [ngClass]="{ 'is-invalid': submitted && f.passnueva.errors }"/>
+                                                        <div *ngIf="submitted && f.passnueva.errors" class="invalid-feedback">
+                                                            <div *ngIf="f.passnueva.errors.required">La contraseña es obligatoria</div>
+                                                            <div *ngIf="f.passnueva.errors.minlength">La contraseña debe tener al menos 8 caracteres</div>
+                                                            <div *ngIf="f.passnueva.errors.pattern">La contraseña solo acepta letras, números y '_' </div>
+                                                        </div>
+                                            </mat-form-field>
+                                        </div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-md-6 offset-md-1">
+                                            <mat-form-field>
+                                                        <input matInput placeholder="Confirme nueva contraseña" formControlName="passnuevaconfirm" type="password" pattern="{{f.passnueva.value}}"/>
+                                                        <div *ngIf="submitted && f.passnuevaconfirm.errors" class="invalid-feedback">
+                                                                <div *ngIf="f.passnuevaconfirm.errors.pattern"> Las contraseñas deben ser idénticas</div>
+                                                                <div *ngIf="f.passnuevaconfirm.errors.required"> Por favor, complete este campo</div>
+                                                        </div>
+                                            </mat-form-field>
+                                        </div>
+                                </div>
+
+                                <div class="row">
+                                        <div class="col-md-2 offset-md-8">
+                                                    <button mat-raised-button type="submit">Aceptar</button>
+                                        </div>
+                                </div>
+                            </form>
+
+                        </mat-card-content>
+                      </mat-card>
+                    </div>
+
+                    <div class="pt-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-10 offset-md-1">
+                                        <mat-card> <a routerLink="/blanquear-clave">¿Olvidaste tu clave de seguridad?</a></mat-card>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+    

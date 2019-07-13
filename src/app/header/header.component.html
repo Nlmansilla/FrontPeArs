@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" routerLink="">Portal Empleados</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" (click)="toggleCollapsed()" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class=" header navbar-collapse justify-content-between" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" *ngIf="false" routerLinkActive="active">
+          <a class="nav-link" href="#"  ><i class="fas fa-pencil-alt"></i> Editar</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="roles.indexOf('super-admin')">
+          <a class="nav-link" routerLink="/recibos" ><i class="fas fa-file-upload"></i> Cargar</a>
+        </li>
+        <li *ngIf=" pwisnull != -1 " class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="/clave"  ><i class="fas fa-key"></i> Clave de seguridad</a>
+        </li>
+        <li class="nav-item" *ngIf="false" routerLinkActive="active">
+          <a class="nav-link" href="#" ><i class="fas fa-user-plus"></i> Roles</a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav">
+          <li class="nav-item" style="padding: 3px;" ng-if="currentUser">
+              <a class="nav-link" mat-button [matMenuTriggerFor]="afterMenu">{{currentUser.name}} {{currentUser.lastname}}</a>
+              <mat-menu #afterMenu="matMenu" xPosition="after">
+                <a class="nav-link" (click)="clickLogout()" mat-menu-item>Salir</a>
+              </mat-menu>
+             </li>
+      </ul>
+
+    </div>
+  </nav>
